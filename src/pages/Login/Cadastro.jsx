@@ -44,14 +44,12 @@ function Cadastro() {
             setSuccess('Cadastro realizado com sucesso! Redirecionando...');
             setError(null);
 
-            // Redireciona para o login após 2 segundos
             setTimeout(() => {
                 navigate('/login');
             }, 2000);
         } catch (error) {
-            console.error(error); // Loga o erro para depuração
+            console.error(error);
 
-            // Verifica se o erro é de email já cadastrado
             if (error.code === 'auth/email-already-in-use') {
                 setError('O email informado já está cadastrado.');
             } else {

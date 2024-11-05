@@ -27,12 +27,10 @@ const useCreateChat = () => {
     setChat(newChat);
   };
 
-  // Função para salvar mensagens no sessionStorage
   const saveMessagesToStorage = (msgs) => {
     sessionStorage.setItem("chatMessages", JSON.stringify(msgs));
   };
 
-  // Carrega mensagens salvas no sessionStorage ao montar o componente
   useEffect(() => {
     const storedMessages = sessionStorage.getItem("chatMessages");
     if (storedMessages) {
@@ -49,7 +47,7 @@ const useCreateChat = () => {
       setMessages([initialMessage]);
     }
 
-    generateChat(); // Gera o chat ao montar o componente
+    generateChat();
   }, []);
 
   const sendMessage = async (message) => {
@@ -58,7 +56,7 @@ const useCreateChat = () => {
     const userMessage = { role: "user", parts: [{ text: message }] };
     const updatedMessages = [...messages, userMessage];
     setMessages(updatedMessages);
-    saveMessagesToStorage(updatedMessages); // Salva após enviar
+    saveMessagesToStorage(updatedMessages);
 
     try {
       const response = await chat.sendMessage(message);
@@ -73,7 +71,7 @@ const useCreateChat = () => {
 
       const newMessages = [...updatedMessages, botMessage];
       setMessages(newMessages);
-      saveMessagesToStorage(newMessages); // Salva as novas mensagens
+      saveMessagesToStorage(newMessages);
     } catch (error) {
       console.error("Erro ao enviar a mensagem:", error);
     } finally {

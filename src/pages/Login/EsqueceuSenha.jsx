@@ -7,7 +7,7 @@ function EsqueceuSenha() {
     const [message, setMessage] = useState('');
     const [error, setError] = useState(null);
     const emailRef = useRef(null);
-    const navigate = useNavigate(); // Hook para redirecionamento
+    const navigate = useNavigate();
 
     const handleResetPassword = async (e) => {
         e.preventDefault();
@@ -16,7 +16,6 @@ function EsqueceuSenha() {
             setMessage('Email de recuperação enviado! Verifique sua caixa de entrada.');
             setError(null);
 
-            // Aguarda 5 segundos antes de redirecionar para a página de login
             setTimeout(() => {
                 navigate('/login');
             }, 5000);

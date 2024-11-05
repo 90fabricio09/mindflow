@@ -24,7 +24,7 @@ function Login() {
                 emailRef.current.value,
                 passwordRef.current.value
             );
-            navigate('/central'); // Redireciona para a central após login bem-sucedido
+            navigate('/central');
         } catch (error) {
             setError('Email ou senha incorretos.');
         }
@@ -33,7 +33,7 @@ function Login() {
     const handleGoogleLogin = async () => {
         try {
             await signInWithPopup(auth, provider);
-            navigate('/central'); // Redireciona para a central após login bem-sucedido com Google
+            navigate('/central');
         } catch (error) {
             setError('Falha ao fazer login com o Google.');
         }
